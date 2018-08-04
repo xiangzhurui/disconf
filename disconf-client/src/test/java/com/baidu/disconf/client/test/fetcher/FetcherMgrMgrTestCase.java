@@ -2,6 +2,7 @@ package com.baidu.disconf.client.test.fetcher;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.baidu.disconf.client.fetcher.FetcherMgr;
@@ -10,7 +11,6 @@ import com.baidu.disconf.client.test.common.BaseSpringTestCase;
 import com.baidu.disconf.client.test.fetcher.inner.restful.RestfulMgrMock;
 import com.baidu.disconf.core.common.restful.RestfulMgr;
 
-import junit.framework.Assert;
 
 /**
  * FetcherMgrMgr测试 (采用Jmockit方法测试)

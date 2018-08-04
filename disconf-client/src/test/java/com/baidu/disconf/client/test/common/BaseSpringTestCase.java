@@ -13,7 +13,7 @@ import com.baidu.disconf.client.config.DisClientSysConfig;
 import com.baidu.disconf.client.test.support.utils.NetUtils;
 import com.baidu.disconf.core.common.path.DisconfWebPathMgr;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 /**
  * Spring的测试方法

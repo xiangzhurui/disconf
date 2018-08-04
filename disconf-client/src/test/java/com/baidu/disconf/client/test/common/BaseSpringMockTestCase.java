@@ -14,7 +14,7 @@ import com.baidu.disconf.client.test.support.utils.NetUtils;
 import com.baidu.disconf.core.common.path.DisconfWebPathMgr;
 import com.baidu.disconf.core.test.common.BaseCoreTestCase;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 /**
  * Spring的测试方法 + WireMock 方法

@@ -16,7 +16,7 @@ import com.baidu.disconf.web.service.config.dao.ConfigDao;
 import com.baidu.disconf.web.test.common.BaseTestCase;
 import com.github.knightliao.apollo.utils.io.FileUtils;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 /**
  * @author liaoqiqi

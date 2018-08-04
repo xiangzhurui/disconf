@@ -1,22 +1,8 @@
 package com.baidu.disconf.client.addons.properties;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.PropertyValue;
+import org.springframework.beans.*;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -26,8 +12,13 @@ import org.springframework.beans.factory.config.BeanDefinitionVisitor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.StringValueResolver;
+
+import java.io.IOException;
+import java.util.*;
 
 /**
  * 具有 reloadable 的 property bean
@@ -59,9 +50,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * @param strVal
      * @param props
      * @param visitedPlaceholders
-     *
      * @return
-     *
      * @throws BeanDefinitionStoreException
      */
     protected String parseStringValue(String strVal, Properties props, Set visitedPlaceholders)
@@ -93,15 +82,18 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                 startIndex = -1;
             }
         }
+        PropertyPlaceholderHelper helper = new PropertyPlaceholderHelper(placeholderPrefix, placeholderSuffix, valueSeparator, ignoreUnresolvablePlaceholders);
+        PropertyPlaceholderHelper.PlaceholderResolver resolver = new PropertySourcesPlaceholderConfigurer(props);
+        return helper.replacePlaceholders(strVal, resolver);
+
         // then, business as usual. no recursive reloading placeholders please.
-        return super.parseStringValue(buf.toString(), props, visitedPlaceholders);
+//        return super.parseStringValue(buf.toString(), props, visitedPlaceholders);
     }
 
     /**
      * @param currentBeanName     当前的bean name
      * @param currentPropertyName 当前它的属性
      * @param orgStrVal           原来的值
-     *
      * @return
      */
     private DynamicProperty getDynamic(String currentBeanName, String currentPropertyName, String orgStrVal) {
@@ -120,7 +112,6 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * merge property and record last merge
      *
      * @return
-     *
      * @throws IOException
      */
     protected Properties mergeProperties() throws IOException {
@@ -485,7 +476,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
     }
 
     public void setProperties(Properties properties) {
-        setPropertiesArray(new Properties[] {properties});
+        setPropertiesArray(new Properties[]{properties});
     }
 
     public void setPropertiesArray(Properties[] propertiesArray) {
