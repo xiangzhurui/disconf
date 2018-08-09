@@ -31,7 +31,7 @@ public final class OsUtil {
      * @return boolean
      *
      * @throws
-     * @Description: make directory
+     *  make directory
      */
     public static boolean makeDirs(final String filePath) {
         File f = new File(filePath);
@@ -48,7 +48,7 @@ public final class OsUtil {
      * @return boolean
      *
      * @throws Exception
-     * @Description: 文件或目录是否存在
+     *  文件或目录是否存在
      * @author liaoqiqi
      * @date 2013-6-13
      */
@@ -64,7 +64,7 @@ public final class OsUtil {
      * @return boolean
      *
      * @throws Exception
-     * @Description: JOIN PATH
+     *  JOIN PATH
      * @author liaoqiqi
      * @date 2013-6-13
      */
@@ -120,7 +120,7 @@ public final class OsUtil {
      *
      * @return void
      *
-     * @Description: 转移文件
+     *  转移文件
      * @author liaoqiqi
      * @date 2013-6-20
      */
@@ -143,7 +143,7 @@ public final class OsUtil {
      *
      * @return void
      *
-     * @Description: 具有重试机制的 ATOM 转移文件 ，并且会校验文件是否一致 才替换
+     *  具有重试机制的 ATOM 转移文件 ，并且会校验文件是否一致 才替换
      * @author liaoqiqi
      * @date 2013-6-20
      */

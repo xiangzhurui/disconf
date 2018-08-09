@@ -16,7 +16,7 @@ import com.baidu.disconf.client.common.annotations.DisconfItem;
 public class ServiceA {
 
     /**
-     * 1. 分布式配置项，keyB是其全局Key名<br/>
+     * 1. 分布式配置项，keyB是其全局Key名<br>
      */
     @Value(value = "10")
     private int varAA;

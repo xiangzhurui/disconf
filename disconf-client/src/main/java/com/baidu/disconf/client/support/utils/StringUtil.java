@@ -1,10 +1,10 @@
 package com.baidu.disconf.client.support.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 有关字符串处理的工具类。
@@ -25,7 +25,6 @@ public abstract class StringUtil {
     /**
      * @param source
      * @param token
-     *
      * @return
      */
     public static List<Integer> parseStringToIntegerList(String source,
@@ -54,7 +53,6 @@ public abstract class StringUtil {
     /**
      * @param source
      * @param token
-     *
      * @return
      */
     public static List<Long> parseStringToLongList(String source, String token) {
@@ -75,7 +73,6 @@ public abstract class StringUtil {
     /**
      * @param source
      * @param token
-     *
      * @return
      */
     public static List<String> parseStringToStringList(String source,
@@ -102,8 +99,8 @@ public abstract class StringUtil {
 
     /**
      * 如果字符串是<code>null</code>或空字符串<code>""</code>，则返回指定默认字符串，否则返回字符串本身。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.defaultIfEmpty(null, "default")  = "default"
      * StringUtil.defaultIfEmpty("", "default")    = "default"
@@ -113,7 +110,6 @@ public abstract class StringUtil {
      *
      * @param str        要转换的字符串
      * @param defaultStr 默认字符串
-     *
      * @return 字符串本身或指定的默认字符串
      */
     public static String defaultIfEmpty(String str, String defaultStr) {
@@ -122,8 +118,8 @@ public abstract class StringUtil {
 
     /**
      * 如果字符串是<code>null</code>或空字符串<code>""</code>，则返回指定默认字符串，否则返回字符串本身。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.defaultIfBlank(null, "default")  = "default"
      * StringUtil.defaultIfBlank("", "default")    = "default"
@@ -133,7 +129,6 @@ public abstract class StringUtil {
      *
      * @param str        要转换的字符串
      * @param defaultStr 默认字符串
-     *
      * @return 字符串本身或指定的默认字符串
      */
     public static String defaultIfBlank(String str, String defaultStr) {
@@ -144,8 +139,8 @@ public abstract class StringUtil {
      * 将字符串转换成camel case。
      * <p>
      * 如果字符串是<code>null</code>则返回<code>null</code>。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.toCamelCase(null)  = null
      * StringUtil.toCamelCase("")    = ""
@@ -154,14 +149,13 @@ public abstract class StringUtil {
      * StringUtil.toCamelCase("aBc def_ghi") = "aBcDefGhi"
      * StringUtil.toCamelCase("aBc def_ghi 123") = "aBcDefGhi123"
      * </pre>
-     * <p/>
+     * 
      * </p>
      * <p>
      * 此方法会保留除了下划线和空白以外的所有分隔符。
      * </p>
      *
      * @param str 要转换的字符串
-     *
      * @return camel case字符串，如果原字符串为<code>null</code>，则返回<code>null</code>
      */
     public static String toCamelCase(String str) {
@@ -213,8 +207,8 @@ public abstract class StringUtil {
      * 将字符串转换成pascal case。
      * <p>
      * 如果字符串是<code>null</code>则返回<code>null</code>。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.toPascalCase(null)  = null
      * StringUtil.toPascalCase("")    = ""
@@ -223,14 +217,13 @@ public abstract class StringUtil {
      * StringUtil.toPascalCase("aBc def_ghi") = "ABcDefGhi"
      * StringUtil.toPascalCase("aBc def_ghi 123") = "aBcDefGhi123"
      * </pre>
-     * <p/>
+     * 
      * </p>
      * <p>
      * 此方法会保留除了下划线和空白以外的所有分隔符。
      * </p>
      *
      * @param str 要转换的字符串
-     *
      * @return pascal case字符串，如果原字符串为<code>null</code>，则返回<code>null</code>
      */
     public static String toPascalCase(String str) {
@@ -278,8 +271,8 @@ public abstract class StringUtil {
      * 将字符串转换成下划线分隔的大写字符串。
      * <p>
      * 如果字符串是<code>null</code>则返回<code>null</code>。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.toUpperCaseWithUnderscores(null)  = null
      * StringUtil.toUpperCaseWithUnderscores("")    = ""
@@ -289,14 +282,13 @@ public abstract class StringUtil {
      * StringUtil.toUpperCaseWithUnderscores("aBc def_ghi 123") = "A_BC_DEF_GHI_123"
      * StringUtil.toUpperCaseWithUnderscores("__a__Bc__") = "__A__BC__"
      * </pre>
-     * <p/>
+     * 
      * </p>
      * <p>
      * 此方法会保留除了空白以外的所有分隔符。
      * </p>
      *
      * @param str 要转换的字符串
-     *
      * @return 下划线分隔的大写字符串，如果原字符串为<code>null</code>，则返回<code>null</code>
      */
     public static String toUpperCaseWithUnderscores(String str) {
@@ -354,8 +346,8 @@ public abstract class StringUtil {
      * 将字符串转换成下划线分隔的小写字符串。
      * <p>
      * 如果字符串是<code>null</code>则返回<code>null</code>。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      * StringUtil.toLowerCaseWithUnderscores(null)  = null
      * StringUtil.toLowerCaseWithUnderscores("")    = ""
@@ -365,14 +357,12 @@ public abstract class StringUtil {
      * StringUtil.toLowerCaseWithUnderscores("aBc def_ghi 123") = "a_bc_def_ghi_123"
      * StringUtil.toLowerCaseWithUnderscores("__a__Bc__") = "__a__bc__"
      * </pre>
-     * <p/>
      * </p>
      * <p>
      * 此方法会保留除了空白以外的所有分隔符。
      * </p>
      *
      * @param str 要转换的字符串
-     *
      * @return 下划线分隔的小写字符串，如果原字符串为<code>null</code>，则返回<code>null</code>
      */
     public static String toLowerCaseWithUnderscores(String str) {
@@ -426,7 +416,6 @@ public abstract class StringUtil {
      * 将一个长整形转换成62进制的字符串。
      *
      * @param longValue 64位数字
-     *
      * @return 62进制的字符串
      */
     public static String longToString(long longValue) {
@@ -438,7 +427,6 @@ public abstract class StringUtil {
      *
      * @param longValue 64位数字
      * @param noCase    区分大小写
-     *
      * @return 62进制的字符串
      */
     public static String longToString(long longValue, boolean noCase) {
@@ -469,7 +457,6 @@ public abstract class StringUtil {
      * 将一个byte数组转换成62进制的字符串。
      *
      * @param bytes 二进制数组
-     *
      * @return 62进制的字符串
      */
     public static String bytesToString(byte[] bytes) {
@@ -481,7 +468,6 @@ public abstract class StringUtil {
      *
      * @param bytes  二进制数组
      * @param noCase 区分大小写
-     *
      * @return 62进制的字符串
      */
     public static String bytesToString(byte[] bytes, boolean noCase) {
@@ -520,7 +506,6 @@ public abstract class StringUtil {
      *
      * @param str 要比较的字符串
      * @param ch  结尾字符
-     *
      * @return 如果字符串<code>str</code>是否以字符<code>ch</code>结尾，则返回<code>true</code>
      */
     public static boolean endsWithChar(String str, char ch) {
@@ -560,7 +545,6 @@ public abstract class StringUtil {
      *
      * @param str 要比较的字符串
      * @param ch  开头字符
-     *
      * @return 如果字符串<code>str</code>是否以字符<code>ch</code> 开头，则返回<code>true</code>
      */
     public static boolean startsWithChar(String str, char ch) {
@@ -629,8 +613,8 @@ public abstract class StringUtil {
 
     /**
      * 解析出下列语法所构成的<code>SENTENCE</code>。
-     * <p/>
-     * <p/>
+     * 
+     * 
      * <pre>
      *  SENTENCE = WORD (DELIMITER* WORD)*
      *

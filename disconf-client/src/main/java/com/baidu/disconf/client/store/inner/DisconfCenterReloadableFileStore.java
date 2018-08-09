@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Created by knightliao on 15/3/20.
- * <p/>
  * reloadable file store
  */
 public class DisconfCenterReloadableFileStore {

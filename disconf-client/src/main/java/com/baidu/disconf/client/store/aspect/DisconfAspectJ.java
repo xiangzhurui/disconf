@@ -1,16 +1,5 @@
 package com.baidu.disconf.client.store.aspect;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.common.annotations.DisconfFile;
 import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 import com.baidu.disconf.client.common.annotations.DisconfItem;
@@ -19,6 +8,16 @@ import com.baidu.disconf.client.store.DisconfStoreProcessor;
 import com.baidu.disconf.client.store.DisconfStoreProcessorFactory;
 import com.baidu.disconf.client.support.utils.MethodUtils;
 import com.baidu.disconf.core.common.constants.DisConfigTypeEnum;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * 配置拦截
@@ -63,13 +62,10 @@ public class DisconfAspectJ {
                 //
                 // 请求仓库配置数据
                 //
-                DisconfStoreProcessor disconfStoreProcessor =
-                        DisconfStoreProcessorFactory.getDisconfStoreFileProcessor();
+                DisconfStoreProcessor disconfStoreProcessor = DisconfStoreProcessorFactory.getDisconfStoreFileProcessor();
                 Object ret = disconfStoreProcessor.getConfig(disconfFile.filename(), disconfFileItem.name());
                 if (ret != null) {
-                    LOGGER.debug("using disconf store value: " + disconfFile.filename() + " ("
-                            + disconfFileItem.name() +
-                            " , " + ret + ")");
+                    LOGGER.debug("using disconf store value: " + disconfFile.filename() + " (" + disconfFileItem.name() + " , " + ret + ")");
                     return ret;
                 }
             }

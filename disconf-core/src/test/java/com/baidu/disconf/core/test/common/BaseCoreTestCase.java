@@ -25,8 +25,9 @@ import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 public class BaseCoreTestCase {
 
     @ClassRule
+    public static WireMockClassRule wireMockClassRule = new WireMockClassRule(RemoteMockServer.PORT);
     @Rule
-    public static WireMockClassRule wireMockRule = new WireMockClassRule(RemoteMockServer.PORT);
+    public  WireMockClassRule wireMockRule = wireMockClassRule;
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(BaseCoreTestCase.class);
 

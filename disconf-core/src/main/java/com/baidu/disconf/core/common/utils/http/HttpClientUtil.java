@@ -110,7 +110,7 @@ public class HttpClientUtil {
     /**
      * @return void
      *
-     * @Description：关闭
+     * 关闭
      * @author liaoqiqi
      * @date 2013-6-16
      */

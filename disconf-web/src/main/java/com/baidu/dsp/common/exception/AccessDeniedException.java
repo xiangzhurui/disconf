@@ -6,7 +6,7 @@ import com.baidu.dsp.common.exception.base.RuntimeGlobalException;
 
 /**
  * @author weiwei
- * @Description: the method is not accessible to current user
+ *  the method is not accessible to current user
  */
 public class AccessDeniedException extends RuntimeGlobalException {
 

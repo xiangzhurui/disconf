@@ -52,7 +52,7 @@ public interface DisconfStoreProcessor {
     void inject2Instance(Object object, String keyName);
 
     /**
-     * 当是配置文件时，有两个参数<br/>
+     * 当是配置文件时，有两个参数<br>
      * 当是配置项时，只有一个参数 ，第二个参数忽略
      */
     Object getConfig(String fileName, String keyName);

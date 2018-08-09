@@ -9,17 +9,17 @@ package com.baidu.disconf.client.core;
 public interface DisconfCoreMgr {
 
     /**
-     * (第一次扫描时使用)<br/>
-     * 1. 获取远程的所有配置数据<br/>
-     * 2. 注入到仓库中<br/>
+     * (第一次扫描时使用)<br>
+     * 1. 获取远程的所有配置数据<br>
+     * 2. 注入到仓库中<br>
      * 3. Watch 配置
      */
     void process();
 
     /**
-     * (第一次、或额外 扫描时使用)<br/>
-     * 1. 获取远程的所有配置数据<br/>
-     * 2. 注入到仓库中<br/>
+     * (第一次、或额外 扫描时使用)<br>
+     * 1. 获取远程的所有配置数据<br>
+     * 2. 注入到仓库中<br>
      * 3. Watch 配置
      */
     void processFile(String fileName);

@@ -59,7 +59,7 @@ public class DisconfWebPathMgr {
     /**
      * @return String
      *
-     * @Description: 获取基本配置路径 的MAP
+     *  获取基本配置路径 的MAP
      * @author liaoqiqi
      * @date 2013-6-16
      */

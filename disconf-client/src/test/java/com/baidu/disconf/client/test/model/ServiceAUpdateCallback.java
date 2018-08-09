@@ -9,8 +9,7 @@ import com.baidu.disconf.client.common.annotations.DisconfUpdateService;
 import com.baidu.disconf.client.common.update.IDisconfUpdate;
 
 /**
- * 分布式配置服务回调函数<br/>
- * <p/>
+ * 分布式配置服务回调函数<br>
  * 1. 使用了分布式配置文件 @DisconfUpdateService
  *
  * @author liaoqiqi

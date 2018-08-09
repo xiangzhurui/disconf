@@ -33,7 +33,7 @@ public class ZookeeperMgr {
      * @return void
      *
      * @throws Exception
-     * @Description: 初始化
+     *  初始化
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -84,7 +84,7 @@ public class ZookeeperMgr {
      *
      * @throws IOException
      * @throws InterruptedException
-     * @Description: 初始化
+     *  初始化
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -132,7 +132,7 @@ public class ZookeeperMgr {
     /**
      * @return void
      *
-     * @Description: 应用程序必须调用它来释放zookeeper资源
+     *  应用程序必须调用它来释放zookeeper资源
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -144,7 +144,7 @@ public class ZookeeperMgr {
     /**
      * @return List<String>
      *
-     * @Description: 获取子孩子 列表
+     *  获取子孩子 列表
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -156,7 +156,7 @@ public class ZookeeperMgr {
     /**
      * @return List<String>
      *
-     * @Description: 写持久化结点, 没有则新建, 存在则进行更新
+     *  写持久化结点, 没有则新建, 存在则进行更新
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -168,7 +168,7 @@ public class ZookeeperMgr {
     /**
      * @return List<String>
      *
-     * @Description: 读结点数据
+     *  读结点数据
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -210,7 +210,7 @@ public class ZookeeperMgr {
      *
      * @throws InterruptedException
      * @throws KeeperException
-     * @Description: 带状态信息的读取数据
+     *  带状态信息的读取数据
      * @author liaoqiqi
      * @date 2013-6-17
      */
@@ -224,7 +224,7 @@ public class ZookeeperMgr {
      *
      * @return void
      *
-     * @Description: 删除结点
+     *  删除结点
      * @author liaoqiqi
      * @date 2013-6-17
      */

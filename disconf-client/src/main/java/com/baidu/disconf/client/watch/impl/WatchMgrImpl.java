@@ -36,7 +36,7 @@ public class WatchMgrImpl implements WatchMgr {
     private boolean debug;
 
     /**
-     * @Description: 获取自己的主备类型
+     *  获取自己的主备类型
      */
     public void init(String hosts, String zooUrlPrefix, boolean debug) throws Exception {
 

@@ -5,7 +5,7 @@ import com.baidu.disconf.client.core.processor.DisconfCoreProcessor;
 import com.baidu.disconf.core.common.constants.DisConfigTypeEnum;
 
 /**
- * 当配置更新时，系统会自动 调用此回调函数<br/>
+ * 当配置更新时，系统会自动 调用此回调函数<br>
  * 这个函数是系统调用的，当有配置更新时，便会进行回调
  *
  * @author liaoqiqi

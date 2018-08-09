@@ -46,7 +46,7 @@ public class ResilientActiveKeyValueStore extends ConnectionWatcher {
      *
      * @throws InterruptedException
      * @throws KeeperException
-     * @Description: 写PATH数据, 是持久化的
+     *  写PATH数据, 是持久化的
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -97,7 +97,7 @@ public class ResilientActiveKeyValueStore extends ConnectionWatcher {
      *
      * @throws InterruptedException
      * @throws KeeperException
-     * @Description: 创建一个临时结点，如果原本存在，则不新建, 如果存在，则更新值
+     *  创建一个临时结点，如果原本存在，则不新建, 如果存在，则更新值
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -200,7 +200,7 @@ public class ResilientActiveKeyValueStore extends ConnectionWatcher {
      *
      * @throws InterruptedException
      * @throws KeeperException
-     * @Description: 读数据
+     *  读数据
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -213,7 +213,7 @@ public class ResilientActiveKeyValueStore extends ConnectionWatcher {
     /**
      * @return List<String>
      *
-     * @Description: 获取子孩子数据
+     *  获取子孩子数据
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -236,7 +236,7 @@ public class ResilientActiveKeyValueStore extends ConnectionWatcher {
      *
      * @return void
      *
-     * @Description: 删除结点
+     *  删除结点
      * @author liaoqiqi
      * @date 2013-6-17
      */

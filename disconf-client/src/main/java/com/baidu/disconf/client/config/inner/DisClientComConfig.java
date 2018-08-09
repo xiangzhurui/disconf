@@ -32,7 +32,7 @@ public class DisClientComConfig {
     }
 
     /**
-     * 初始化实例指纹<br/>
+     * 初始化实例指纹<br>
      * 以IP和PORT为指紋，如果找不到则以本地IP为指纹
      */
     private void initInstanceFingerprint() {

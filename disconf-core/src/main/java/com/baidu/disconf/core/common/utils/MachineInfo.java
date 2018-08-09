@@ -18,7 +18,7 @@ public final class MachineInfo {
     /**
      * @return
      *
-     * @Description: 获取机器名
+     *  获取机器名
      */
     public static String getHostName() throws Exception {
 
@@ -37,7 +37,7 @@ public final class MachineInfo {
     /**
      * @return
      *
-     * @Description: 获取机器名
+     *  获取机器名
      */
     public static String getHostIp() throws Exception {
 

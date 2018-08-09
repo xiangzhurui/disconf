@@ -200,7 +200,7 @@ public class DisconfMgr implements ApplicationContextAware {
     }
 
     /**
-     * @Description: 总关闭
+     *  总关闭
      */
     public synchronized void close() {
 

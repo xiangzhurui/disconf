@@ -13,7 +13,7 @@ public class ZooPathMgr {
     /**
      * @return String
      *
-     * @Description: 获取ZOOKEEPER的应用基础路径
+     *  获取ZOOKEEPER的应用基础路径
      * @author liaoqiqi
      * @date 2013-6-17
      */
@@ -47,7 +47,7 @@ public class ZooPathMgr {
     /**
      * @return String
      *
-     * @Description: 获取 Disconf ITEM ZOO Path
+     *  获取 Disconf ITEM ZOO Path
      * @author liaoqiqi
      * @date 2013-6-17
      */
@@ -59,7 +59,7 @@ public class ZooPathMgr {
     /**
      * @return String
      *
-     * @Description: 获取 Disconf FILE ZOO Path
+     *  获取 Disconf FILE ZOO Path
      * @author liaoqiqi
      * @date 2013-6-17
      */

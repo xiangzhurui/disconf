@@ -49,8 +49,7 @@ public class ScanDynamicStoreAdapter {
     }
 
     /**
-     * 第二次扫描, 获取更新 回调的实例<br/>
-     * <p/>
+     * 第二次扫描, 获取更新 回调的实例<br>
      * 分析出更新操作的相关配置文件内容
      */
     private static ScanDynamicModel analysis4DisconfUpdate(ScanStaticModel scanModel, Registry registry) {
@@ -157,7 +156,6 @@ public class ScanDynamicStoreAdapter {
 
     /**
      * 获取回调接口的实现
-     * <p/>
      * // 回调函数需要实例化出来,这里
      * // 非Spring直接New
      * // Spring要GetBean
@@ -212,7 +210,7 @@ public class ScanDynamicStoreAdapter {
     }
 
     /**
-     * 第二次扫描<br/>
+     * 第二次扫描<br>
      * 转换 pipeline 回调函数，将其写到 仓库中
      */
     private static void transformPipelineService(IDisconfUpdatePipeline iDisconfUpdatePipeline) {
@@ -223,7 +221,7 @@ public class ScanDynamicStoreAdapter {
     }
 
     /**
-     * 第二次扫描<br/>
+     * 第二次扫描<br>
      * 转换 更新 回调函数，将其写到 仓库中
      */
     private static void transformUpdateService(Map<DisconfKey,

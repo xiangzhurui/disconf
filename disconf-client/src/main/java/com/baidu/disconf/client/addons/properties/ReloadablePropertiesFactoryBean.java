@@ -23,7 +23,6 @@ import com.baidu.disconf.client.DisconfMgr;
  * A properties factory bean that creates a reconfigurable Properties object.
  * When the Properties' reloadConfiguration method is called, and the file has
  * changed, the properties are read again from the file.
- * <p/>
  * 真正的 reload bean 定义，它可以定义多个 resource 为 reload config file
  */
 public class ReloadablePropertiesFactoryBean extends PropertiesFactoryBean implements DisposableBean,

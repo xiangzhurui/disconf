@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 配置的值，配置文件是properties, 配置项是string<br/>
+ * 配置的值，配置文件是properties, 配置项是string<br>
  * 这个类是为了做兼容
  *
  * @author liaoqiqi

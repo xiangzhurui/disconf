@@ -38,7 +38,7 @@ public final class DisconfAutowareConfig {
     /**
      * 使用 system env 进行数据导入, 能识别   DisInnerConfigAnnotation 的标识
      *
-     * @Description: auto ware
+     *  auto ware
      */
     public static void autowareConfigWithSystemEnv(final Object obj) throws Exception {
 
@@ -89,7 +89,7 @@ public final class DisconfAutowareConfig {
     /**
      * 自动导入配置数据,能识别 DisconfFileItem 或 DisInnerConfigAnnotation 的标识
      *
-     * @Description: auto ware
+     *  auto ware
      */
     private static void autowareConfig(final Object obj, Properties prop) throws Exception {
 
@@ -177,7 +177,7 @@ public final class DisconfAutowareConfig {
     /**
      * 自动导入Static配置数据,能识别 DisconfFileItem 或 DisconfFileItem 的标识
      *
-     * @Description: auto ware
+     *  auto ware
      */
     private static void autowareStaticConfig(Class<?> cls, Properties prop) throws Exception {
 

@@ -53,10 +53,9 @@ public class DisconfCoreMgrImpl implements DisconfCoreMgr {
     }
 
     /**
-     * 1. 获取远程的所有配置数据<br/>
-     * 2. 注入到仓库中<br/>
-     * 3. Watch 配置 <br/>
-     * <p/>
+     * 1. 获取远程的所有配置数据<br>
+     * 2. 注入到仓库中<br>
+     * 3. Watch 配置 <br>
      * 更新 所有配置数据
      */
     public void process() {

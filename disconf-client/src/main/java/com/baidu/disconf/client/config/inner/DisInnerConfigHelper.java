@@ -26,7 +26,7 @@ public class DisInnerConfigHelper {
 
     /**
      * @throws Exception
-     * @Description: 校验用户配置文件是否正常
+     *  校验用户配置文件是否正常
      * @author liaoqiqi
      * @date 2013-6-13
      */
@@ -129,7 +129,7 @@ public class DisInnerConfigHelper {
 
     /**
      * @throws Exception
-     * @Description: 校验系统配置文件是否正常
+     *  校验系统配置文件是否正常
      * @date 2013-6-13
      */
     public static void verifySysConfig() throws Exception {

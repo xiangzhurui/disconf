@@ -1,15 +1,14 @@
 package com.baidu.disconf.client.core.filetype;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.common.constants.SupportFileTypeEnum;
 import com.baidu.disconf.client.core.filetype.impl.DisconfAnyFileProcessorImpl;
 import com.baidu.disconf.client.core.filetype.impl.DisconfPropertiesProcessorImpl;
 import com.baidu.disconf.client.core.filetype.impl.DisconfXmlProcessorImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author knightliao
@@ -22,7 +21,7 @@ public class FileTypeProcessorUtils {
      * 输入文件名，返回其相应的k-v数据
      */
     public static Map<String, Object> getKvMap(SupportFileTypeEnum supportFileTypeEnum, String fileName)
-        throws Exception {
+            throws Exception {
 
         DisconfFileTypeProcessor disconfFileTypeProcessor;
 

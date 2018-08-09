@@ -12,9 +12,7 @@ import org.springframework.beans.factory.config.BeanDefinitionVisitor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.StringValueResolver;
 
 import java.io.IOException;
@@ -53,6 +51,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * @return
      * @throws BeanDefinitionStoreException
      */
+    @Override
     protected String parseStringValue(String strVal, Properties props, Set visitedPlaceholders)
             throws BeanDefinitionStoreException {
 
@@ -82,12 +81,12 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                 startIndex = -1;
             }
         }
-        PropertyPlaceholderHelper helper = new PropertyPlaceholderHelper(placeholderPrefix, placeholderSuffix, valueSeparator, ignoreUnresolvablePlaceholders);
-        PropertyPlaceholderHelper.PlaceholderResolver resolver = new PropertySourcesPlaceholderConfigurer(props);
-        return helper.replacePlaceholders(strVal, resolver);
+//        PropertyPlaceholderHelper helper = new PropertyPlaceholderHelper(placeholderPrefix, placeholderSuffix, valueSeparator, ignoreUnresolvablePlaceholders);
+//        PropertyPlaceholderHelper.PlaceholderResolver resolver = new PropertySourcesPlaceholderConfigurer(props);
+//        return helper.replacePlaceholders(strVal, resolver);
 
         // then, business as usual. no recursive reloading placeholders please.
-//        return super.parseStringValue(buf.toString(), props, visitedPlaceholders);
+        return super.parseStringValue(buf.toString(), props, visitedPlaceholders);
     }
 
     /**
@@ -114,6 +113,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * @return
      * @throws IOException
      */
+    @Override
     protected Properties mergeProperties() throws IOException {
         Properties properties = super.mergeProperties();
         this.lastMergedProperties = properties;
@@ -125,6 +125,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      *
      * @param event
      */
+    @Override
     public void propertiesReloaded(PropertiesReloadedEvent event) {
 
         Properties oldProperties = lastMergedProperties;
@@ -284,6 +285,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
             return propertyName;
         }
 
+        @Override
         public boolean equals(Object o) {
             if (this == o) {
                 return true;
@@ -304,6 +306,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
             return true;
         }
 
+        @Override
         public int hashCode() {
             int result;
             result = (beanName != null ? beanName.hashCode() : 0);
@@ -355,6 +358,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * copy & paste, just so we can insert our own visitor.
      * 启动时 进行配置的解析
      */
+    @Override
     protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
             throws BeansException {
 
@@ -394,6 +398,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * afterPropertiesSet
      * 将自己 添加 property listener
      */
+    @Override
     public void afterPropertiesSet() {
         for (Properties properties : propertiesArray) {
             if (properties instanceof ReloadableProperties) {
@@ -409,6 +414,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      *
      * @throws Exception
      */
+    @Override
     public void destroy() throws Exception {
         for (Properties properties : propertiesArray) {
             if (properties instanceof ReloadableProperties) {
@@ -429,6 +435,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
             this.props = props;
         }
 
+        @Override
         protected void visitPropertyValues(MutablePropertyValues pvs) {
             PropertyValue[] pvArray = pvs.getPropertyValues();
             for (PropertyValue pv : pvArray) {
@@ -444,6 +451,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
             }
         }
 
+        @Override
         protected String resolveStringValue(String strVal) throws BeansException {
             return parseStringValue(strVal, this.props, new HashSet());
         }
@@ -471,34 +479,41 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      */
     private ApplicationContext applicationContext;
 
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
+    @Override
     public void setProperties(Properties properties) {
         setPropertiesArray(new Properties[]{properties});
     }
 
+    @Override
     public void setPropertiesArray(Properties[] propertiesArray) {
         this.propertiesArray = propertiesArray;
         super.setPropertiesArray(propertiesArray);
     }
 
+    @Override
     public void setPlaceholderPrefix(String placeholderPrefix) {
         this.placeholderPrefix = placeholderPrefix;
         super.setPlaceholderPrefix(placeholderPrefix);
     }
 
+    @Override
     public void setPlaceholderSuffix(String placeholderSuffix) {
         this.placeholderSuffix = placeholderSuffix;
         super.setPlaceholderSuffix(placeholderPrefix);
     }
 
+    @Override
     public void setBeanName(String beanName) {
         this.beanName = beanName;
         super.setBeanName(beanName);
     }
 
+    @Override
     public void setBeanFactory(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
         super.setBeanFactory(beanFactory);

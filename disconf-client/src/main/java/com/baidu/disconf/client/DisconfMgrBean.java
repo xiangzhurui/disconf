@@ -54,7 +54,7 @@ public class DisconfMgrBean implements BeanDefinitionRegistryPostProcessor, Prio
     }
 
     /**
-     * 第一次扫描<br/>
+     * 第一次扫描<br>
      * 在Spring内部的Bean定义初始化后执行，这样是最高优先级的
      */
     @Override

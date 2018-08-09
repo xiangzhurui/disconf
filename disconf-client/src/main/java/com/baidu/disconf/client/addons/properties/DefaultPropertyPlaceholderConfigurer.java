@@ -8,10 +8,8 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
  * A property resource configurer that resolves placeholders with defaults in bean property values of
  * context definitions. It <i>pulls</i> values from a properties file into bean definitions,
  * using the default value if no value is given in the properties file.
- * <p/>
  * <p>The default syntax uses an equals sign ('=') to separate the placeholder name from the default value.
  * This syntax mimicks the syntax which would be used in a property file.
- * <p/>
  * <p>Example:
  * <pre>
  * &lt;bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;

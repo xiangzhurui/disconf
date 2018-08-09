@@ -49,7 +49,7 @@ public class ConnectionWatcher implements Watcher {
      *
      * @throws IOException
      * @throws InterruptedException
-     * @Description: 连接ZK
+     *  连接ZK
      * @author liaoqiqi
      * @date 2013-6-14
      */
@@ -138,7 +138,7 @@ public class ConnectionWatcher implements Watcher {
      * @return void
      *
      * @throws InterruptedException
-     * @Description: 关闭
+     *  关闭
      * @author liaoqiqi
      * @date 2013-6-14
      */

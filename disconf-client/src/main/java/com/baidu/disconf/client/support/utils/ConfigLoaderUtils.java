@@ -34,7 +34,7 @@ public final class ConfigLoaderUtils {
      *
      * @return void
      *
-     * @Description: 使用TOMCAT方式来导入
+     *  使用TOMCAT方式来导入
      * @author liaoqiqi
      * @date 2013-6-19
      */
@@ -66,7 +66,7 @@ public final class ConfigLoaderUtils {
      *
      * @return void
      *
-     * @Description: 使用普通模式导入
+     *  使用普通模式导入
      * @author liaoqiqi
      * @date 2013-6-19
      */
@@ -84,7 +84,7 @@ public final class ConfigLoaderUtils {
      * @return Properties
      *
      * @throws Exception
-     * @Description: 配置文件载入器助手
+     *  配置文件载入器助手
      * @author liaoqiqi
      * @date 2013-6-19
      */
@@ -115,7 +115,7 @@ public final class ConfigLoaderUtils {
      *
      * @return InputStream
      *
-     * @Description: 采用两种方式来载入文件
+     *  采用两种方式来载入文件
      * @author liaoqiqi
      * @date 2013-6-20
      */

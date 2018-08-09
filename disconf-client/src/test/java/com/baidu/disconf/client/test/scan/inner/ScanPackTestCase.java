@@ -1,22 +1,21 @@
 package com.baidu.disconf.client.test.scan.inner;
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.baidu.disconf.client.DisconfMgrBean;
+import com.baidu.disconf.client.scan.inner.statically.model.ScanStaticModel;
+import com.baidu.disconf.client.scan.inner.statically.strategy.ScanStaticStrategy;
+import com.baidu.disconf.client.scan.inner.statically.strategy.impl.ReflectionScanStatic;
+import com.baidu.disconf.client.support.utils.ScanPrinterUtils;
+import com.baidu.disconf.client.support.utils.StringUtil;
+import com.baidu.disconf.client.test.common.BaseSpringTestCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baidu.disconf.client.DisconfMgrBean;
-import com.baidu.disconf.client.scan.inner.statically.model.ScanStaticModel;
-import com.baidu.disconf.client.scan.inner.statically.strategy.ScanStaticStrategy;
-import com.baidu.disconf.client.scan.inner.statically.strategy.impl.ReflectionScanStatic;
-import com.baidu.disconf.client.test.common.BaseSpringTestCase;
-import com.baidu.disconf.client.support.utils.ScanPrinterUtils;
-import com.baidu.disconf.client.support.utils.StringUtil;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 扫描测试
@@ -29,8 +28,7 @@ public class ScanPackTestCase extends BaseSpringTestCase {
     protected static final Logger LOGGER = LoggerFactory.getLogger(ScanPackTestCase.class);
 
     public static final String SCAN_PACK_NAME = "com.baidu.disconf.client.test";
-    public static final List<String> SCAN_PACK_NAME_LIST =
-            StringUtil.parseStringToStringList(SCAN_PACK_NAME, DisconfMgrBean.SCAN_SPLIT_TOKEN);
+    public static final List<String> SCAN_PACK_NAME_LIST = StringUtil.parseStringToStringList(SCAN_PACK_NAME, DisconfMgrBean.SCAN_SPLIT_TOKEN);
 
     @Test
     public void scan() {

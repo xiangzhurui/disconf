@@ -37,9 +37,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Created by knightliao on 15/1/23.
- * <p/>
  * 扫描静态注解，并且进行分析整合数据
- * <p/>
  * 使用 Reflection Lib
  */
 public class ReflectionScanStatic implements ScanStaticStrategy {
@@ -81,7 +79,7 @@ public class ReflectionScanStatic implements ScanStaticStrategy {
         //
         Collection<URL> urlTotals = new ArrayList<URL>();
         for (String packName : packNameList) {
-            Set<URL> urls = ClasspathHelper.forPackage(packName);
+            Collection<URL> urls = ClasspathHelper.forPackage(packName);
             urlTotals.addAll(urls);
         }
 
