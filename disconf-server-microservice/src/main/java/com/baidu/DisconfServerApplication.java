@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
-@ImportResource(locations = {"classpath:/META-INF/applicationContext.xml","classpath:/META-INF/spring-servlet.xml"})
+@ImportResource(locations = {"classpath:/META-INF/applicationContext.xml"})
 @SpringBootApplication
 public class DisconfServerApplication {
 

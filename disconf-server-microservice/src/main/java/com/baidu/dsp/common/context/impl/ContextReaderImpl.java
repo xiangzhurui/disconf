@@ -35,4 +35,10 @@ public class ContextReaderImpl implements ApplicationContextAware, ContextReader
     public String getMessage(MessageSourceResolvable resolvable) throws NoSuchMessageException {
         return context.getMessage(resolvable, Locale.SIMPLIFIED_CHINESE);
     }
+
+    public static void main(String[] args) {
+        System.out.println(Locale.SIMPLIFIED_CHINESE);
+        System.out.println(Locale.SIMPLIFIED_CHINESE.getDisplayName());
+        System.out.println(Locale.SIMPLIFIED_CHINESE.getLanguage());
+    }
 }

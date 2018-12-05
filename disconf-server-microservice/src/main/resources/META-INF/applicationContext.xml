@@ -21,43 +21,40 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!-- 定时器开关 -->
-    <task:annotation-driven executor="proExecutor"
-                            scheduler="proScheduler"/>
+    <task:annotation-driven executor="proExecutor" scheduler="proScheduler"/>
     <task:executor id="proExecutor" pool-size="5"/>
     <task:scheduler id="proScheduler" pool-size="10"/>
 
     <!-- Validator设置 -->
-    <import resource="classpath*:/META-INF/myconfig/spring-servlet-validator.xml"/>
+    <import resource="classpath*:/META-INF/spring-servlet-validator.xml"/>
 
     <!-- 拦截器配置 -->
-    <import resource="classpath*:/META-INF/myconfig/spring-servlet-interceptor.xml"/>
+    <import resource="classpath*:/META-INF/spring-servlet-interceptor.xml"/>
 
     <!-- configs -->
     <!--<bean id="propertyConfigurerForProject1"-->
-          <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="order" value="1"/>-->
-        <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>-->
-        <!--<property name="ignoreResourceNotFound" value="true"/>-->
-        <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
-        <!--<property name="locations">-->
-            <!--<list>-->
-                <!--&lt;!&ndash;<value>classpath*:/jdbc-mysql.properties</value>&ndash;&gt;-->
-                <!--<value>classpath*:/application.properties</value>-->
-                <!--&lt;!&ndash;<value>classpath*:/zoo.properties</value>&ndash;&gt;-->
-                <!--&lt;!&ndash;<value>classpath*:/redis-config.properties</value>&ndash;&gt;-->
-                <!--&lt;!&ndash;<value>classpath*:/application.properties</value>&ndash;&gt;-->
-            <!--</list>-->
-        <!--</property>-->
+    <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--<property name="order" value="1"/>-->
+    <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>-->
+    <!--<property name="ignoreResourceNotFound" value="true"/>-->
+    <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
+    <!--<property name="locations">-->
+    <!--<list>-->
+    <!--&lt;!&ndash;<value>classpath*:/jdbc-mysql.properties</value>&ndash;&gt;-->
+    <!--<value>classpath*:/application.properties</value>-->
+    <!--&lt;!&ndash;<value>classpath*:/zoo.properties</value>&ndash;&gt;-->
+    <!--&lt;!&ndash;<value>classpath*:/redis-config.properties</value>&ndash;&gt;-->
+    <!--&lt;!&ndash;<value>classpath*:/application.properties</value>&ndash;&gt;-->
+    <!--</list>-->
+    <!--</property>-->
     <!--</bean>-->
 
-    <bean id="zooConfig"
-          class="com.baidu.disconf.web.service.zookeeper.config.ZooConfig">
+    <bean id="zooConfig" class="com.baidu.disconf.web.service.zookeeper.config.ZooConfig">
         <property name="zooHosts" value="${hosts}"/>
         <property name="zookeeperUrlPrefix" value="${zookeeper_url_prefix}"/>
     </bean>
 
-    <bean id="applicationPropertyConfig"
-          class="com.baidu.disconf.web.config.ApplicationPropertyConfig">
+    <bean id="applicationPropertyConfig" class="com.baidu.disconf.web.config.ApplicationPropertyConfig">
         <property name="emailHost" value="${EMAIL_HOST}"/>
         <property name="emailPassword" value="${EMAIL_HOST_PASSWORD}"/>
         <property name="emailUser" value="${EMAIL_HOST_USER}"/>
@@ -70,37 +67,37 @@
     </bean>
 
     <!-- import -->
-    <import resource="classpath*:/META-INF/myconfig/applicationContext-cache.xml"/>
-    <import resource="classpath*:/META-INF/myconfig/applicationContext-springcache.xml"/>
+    <import resource="classpath*:/META-INF/applicationContext-cache.xml"/>
+    <import resource="classpath*:/META-INF/applicationContext-springcache.xml"/>
 
     <!-- profile -->
-    <!--<beans profile="db-test">-->
-        <!--<import resource="classpath*:applicationContext-dbconfig-test.xml"/>-->
-        <!--<bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImplMock"/>-->
-        <!--<bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspectMock"/>-->
-        <!--<bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverMock"/>-->
-    <!--</beans>-->
-
-    <!--<beans profile="db-normal">-->
-        <!--<import resource="classpath*:/META-INF/myconfig/applicationContext-dbconfig.xml"/>-->
-        <!--<bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImpl"/>-->
-        <!--<bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspect"/>-->
-        <!--<bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverImpl"/>-->
-    <!--</beans>-->
-
-    <!--<beans profile="production">-->
-        <!--<import resource="classpath*:/META-INF/myconfig/applicationContext-dbconfig.xml"/>-->
-        <!--<bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImpl"/>-->
-        <!--<bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspect"/>-->
-        <!--<bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverImpl"/>-->
-    <!--</beans>-->
-
-    <!--<beans profile="rd">-->
-        <import resource="classpath*:/META-INF/myconfig/applicationContext-dbconfig.xml"/>
+    <beans profile="db-test">
+        <import resource="classpath*:applicationContext-dbconfig-test.xml"/>
         <bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImplMock"/>
         <bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspectMock"/>
         <bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverMock"/>
-    <!--</beans>-->
+    </beans>
+
+    <beans profile="db-normal">
+        <import resource="classpath*:/META-INF/applicationContext-dbconfig.xml"/>
+        <bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImpl"/>
+        <bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspect"/>
+        <bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverImpl"/>
+    </beans>
+
+    <beans profile="production">
+        <import resource="classpath*:/META-INF/applicationContext-dbconfig.xml"/>
+        <bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImpl"/>
+        <bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspect"/>
+        <bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverImpl"/>
+    </beans>
+
+    <beans profile="rd">
+        <import resource="classpath*:/META-INF/applicationContext-dbconfig.xml"/>
+        <bean id="loginRedisLogin" class="com.baidu.disconf.web.web.auth.login.impl.RedisLoginImplMock"/>
+        <bean id="roleResourceAspect" class="com.baidu.disconf.web.service.roleres.service.RoleResourceAspectMock"/>
+        <bean id="zookeeperDriver" class="com.baidu.disconf.web.innerapi.zookeeper.impl.ZookeeperDriverMock"/>
+    </beans>
 
 
 </beans>
