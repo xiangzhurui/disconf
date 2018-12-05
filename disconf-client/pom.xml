@@ -11,6 +11,7 @@
         <groupId>com.baidu.disconf</groupId>
         <artifactId>disconf-base</artifactId>
         <version>2.6.37</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <licenses>

@@ -26,18 +26,20 @@
 
     <properties>
         <!-- 模块版本号 -->
-        <disconf-core.version>2.6.36</disconf-core.version>
+        <disconf-core.version>2.6.37</disconf-core.version>
         <disconf-client.version>2.6.37</disconf-client.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+        <source.version>${java.version}</source.version>
+        <target.version>${java.version}</target.version>
+
 
         <!-- JAVA环境 -->
-        <java.version>1.6</java.version>
-        <source.version>1.6</source.version>
-        <target.version>1.6</target.version>
+
         <spring.version>4.3.17.RELEASE</spring.version>
         <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
         <junit.version>4.12</junit.version>
@@ -58,9 +60,9 @@
             <!-- common dependencies -->
 
             <!--<dependency>-->
-                <!--<groupId>org.aopalliance</groupId>-->
-                <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
-                <!--<version>2.5.6</version>-->
+            <!--<groupId>org.aopalliance</groupId>-->
+            <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
+            <!--<version>2.5.6</version>-->
             <!--</dependency>-->
 
             <dependency>
@@ -211,9 +213,9 @@
             </dependency>
 
             <!--<dependency>-->
-                <!--<groupId>javax.xml</groupId>-->
-                <!--<artifactId>javax.xml</artifactId>-->
-                <!--<version>1.3.4.v201005080400</version>-->
+            <!--<groupId>javax.xml</groupId>-->
+            <!--<artifactId>javax.xml</artifactId>-->
+            <!--<version>1.3.4.v201005080400</version>-->
             <!--</dependency>-->
 
             <dependency>
@@ -364,9 +366,9 @@
             </dependency>
 
             <!--<dependency>-->
-                <!--<groupId>org.springframework</groupId>-->
-                <!--<artifactId>spring-tomcat</artifactId>-->
-                <!--<version>${spring.version}</version>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-tomcat</artifactId>-->
+            <!--<version>${spring.version}</version>-->
             <!--</dependency>-->
 
             <dependency>
@@ -584,11 +586,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
-                    <encoding>${encoding}</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${maven.compiler.encoding}</encoding>
                     <failOnError>true</failOnError>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
