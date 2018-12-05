@@ -164,10 +164,10 @@
                     <failOnError>true</failOnError>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
-                    <compilerArguments>
-                        <verbose/>
-                        <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
-                    </compilerArguments>
+                    <!--<compilerArguments>-->
+                        <!--<verbose/>-->
+                        <!--<bootclasspath>${java.home}/lib/rt.jar</bootclasspath>-->
+                    <!--</compilerArguments>-->
                 </configuration>
 
             </plugin>
@@ -247,26 +247,33 @@
                         </executions>
                     </plugin>
                     <!-- Javadoc -->
+                    <!--忽略javadoc测试的-->
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
-                                <phase>package</phase>
+                                <id>attach-javadocs</id>
+                                <phase>install</phase>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <encoding>UTF-8</encoding>
+                                    <failOnError>false</failOnError>
+                                </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <skip>true</skip>
+                            <doclint>none</doclint>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

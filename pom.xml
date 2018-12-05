@@ -12,6 +12,8 @@
     <modules>
         <module>disconf-core</module>
         <module>disconf-client</module>
+        <module>disconf-server-microservice</module>
+        <module>disconf-web</module>
     </modules>
 
     <inceptionYear>2015</inceptionYear>
@@ -36,14 +38,13 @@
         <java.version>1.8</java.version>
         <source.version>${java.version}</source.version>
         <target.version>${java.version}</target.version>
-
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
 
         <!-- JAVA环境 -->
 
-        <spring.version>4.3.17.RELEASE</spring.version>
+        <spring.version>4.3.18.RELEASE</spring.version>
         <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
         <junit.version>4.12</junit.version>
-        <jsp.version>2.0</jsp.version>
         <servlet.version>3.1.0</servlet.version>
         <cglib.version>2.2.2</cglib.version>
 
@@ -52,18 +53,11 @@
         <project.build.online.sourceDir>${project.basedir}/src/main/online-resources</project.build.online.sourceDir>
         <project.build.offline.sourceDir>${project.basedir}/src/main/resources</project.build.offline.sourceDir>
 
+        <jsp-api.version>2.2</jsp-api.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- common dependencies -->
-
-            <!--<dependency>-->
-            <!--<groupId>org.aopalliance</groupId>-->
-            <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
-            <!--<version>2.5.6</version>-->
-            <!--</dependency>-->
 
             <dependency>
                 <groupId>javax.mail</groupId>
@@ -74,6 +68,11 @@
                 <groupId>com.sun.mail</groupId>
                 <artifactId>javax.mail</artifactId>
                 <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4.7</version>
             </dependency>
 
             <dependency>
@@ -152,7 +151,7 @@
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>
                 <artifactId>jsp-api</artifactId>
-                <version>${jsp.version}</version>
+                <version>${jsp-api.version}</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -287,12 +286,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.ostermiller</groupId>
-                <artifactId>utils</artifactId>
-                <version>1.07.00</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>20.0</version>
@@ -345,7 +338,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-instrument-tomcat</artifactId>
-                <version>${spring.version}</version>
+                <version>4.3.18.RELEASE</version>
             </dependency>
 
             <dependency>
@@ -477,12 +470,6 @@
             </dependency>
 
             <!-- log -->
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-nop</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -691,6 +678,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -699,6 +687,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
             </plugin>
 
         </plugins>
@@ -762,17 +753,25 @@
                     </plugin>
                     <!-- Javadoc -->
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
-                                <phase>package</phase>
+                                <id>attach-javadocs</id>
+                                <phase>install</phase>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <encoding>UTF-8</encoding>
+                                </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <skip>true</skip>
+                            <doclint>none</doclint>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
