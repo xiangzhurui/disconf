@@ -109,6 +109,11 @@ VALUES
     (71, 2, '/api/web/config/filetext/{configId}', 'update', '0100', '99991231235959'),
     (72, 3, '/api/web/config/filetext/{configId}', 'update', '0000', '99991231235959');
 
+INSERT INTO `role_resource` (`role_id`, `url_pattern`, `url_description`, `method_mask`) VALUES
+(1,'/api/account/password' , '修改密码' , '0100'),
+(2,'/api/account/password' , '修改密码' , '0100'),
+(3,'/api/account/password' , '修改密码' , '0000');
+
 /* testUser1  MhxzKhl9209*/
 /* testUser2  MhxzKhl167*/
 /* testUser3  MhxzKhl783*/
