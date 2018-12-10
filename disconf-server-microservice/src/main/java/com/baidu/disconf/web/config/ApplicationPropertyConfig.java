@@ -1,40 +1,53 @@
 package com.baidu.disconf.web.config;
 
+import lombok.ToString;
 import org.springframework.stereotype.Service;
 
 /**
  * @author knightliao
  */
+@ToString
 @Service
 public class ApplicationPropertyConfig {
 
-    //
-    // email setting
-    //
-
+    /**
+     * 邮件服务器
+     */
     private String emailHost;
 
+    /**
+     * 发件人密码
+     */
     private String emailPassword;
-
+    /**
+     * 发件人用户名
+     */
     private String emailUser;
-
+    /**
+     * email 发件端口号
+     */
     private String emailPort;
-
+    /**
+     * 发件人邮箱地址
+     */
     private String fromEmail;
-
+    /**
+     * 收件人邮箱地址
+     */
     private String emailReceiver;
-
+    /**
+     * 邮件监控开关
+     */
     private boolean emailMonitorOn = false;
 
-    //
-    // consistency
-    //
-
+    /**
+     * consistency
+     */
     private boolean checkConsistencyOn = false;
 
-    //
-    // domain
-    //
+    /**
+     * 服务域名
+     */
     private String domain;
 
     public String getEmailHost() {
@@ -109,12 +122,5 @@ public class ApplicationPropertyConfig {
         this.domain = domain;
     }
 
-    @Override
-    public String toString() {
-        return "ApplicationPropertyConfig [emailHost=" + emailHost + ", emailPassword=" + emailPassword +
-                   ", emailUser=" + emailUser + ", emailPort=" + emailPort + ", fromEmail=" + fromEmail +
-                   ", emailReceiver=" + emailReceiver + ", emailMonitorOn=" + emailMonitorOn + ", checkConsistencyOn=" +
-                   checkConsistencyOn + "]";
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.baidu.disconf.web.test.common;
 
+import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -17,4 +18,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 @ActiveProfiles({ "db-test" })
 public class BaseTestCase extends AbstractTestCase {
 
+    @Test
+    public void contextLoads(){
+    }
 }

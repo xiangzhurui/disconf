@@ -32,21 +32,20 @@
     <import resource="classpath*:/META-INF/spring-servlet-interceptor.xml"/>
 
     <!-- configs -->
-    <!--<bean id="propertyConfigurerForProject1"-->
-    <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-    <!--<property name="order" value="1"/>-->
-    <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>-->
-    <!--<property name="ignoreResourceNotFound" value="true"/>-->
-    <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
-    <!--<property name="locations">-->
-    <!--<list>-->
-    <!--&lt;!&ndash;<value>classpath*:/jdbc-mysql.properties</value>&ndash;&gt;-->
-    <!--<value>classpath*:/application.properties</value>-->
-    <!--&lt;!&ndash;<value>classpath*:/zoo.properties</value>&ndash;&gt;-->
-    <!--&lt;!&ndash;<value>classpath*:/redis-config.properties</value>&ndash;&gt;-->
-    <!--&lt;!&ndash;<value>classpath*:/application.properties</value>&ndash;&gt;-->
-    <!--</list>-->
-    <!--</property>-->
+    <!--<bean id="propertyConfigurerForProject1" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="order" value="1"/>-->
+        <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>-->
+        <!--<property name="ignoreResourceNotFound" value="true"/>-->
+        <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>classpath*:/jdbc-mysql.properties</value>-->
+                <!--<value>classpath*:/application.properties</value>-->
+                <!--<value>classpath*:/zoo.properties</value>-->
+                <!--<value>classpath*:/redis-config.properties</value>-->
+                <!--<value>classpath*:/application.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
     <!--</bean>-->
 
     <bean id="zooConfig" class="com.baidu.disconf.web.service.zookeeper.config.ZooConfig">

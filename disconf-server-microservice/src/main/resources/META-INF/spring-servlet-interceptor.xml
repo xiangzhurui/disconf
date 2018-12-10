@@ -5,15 +5,11 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-
     <mvc:interceptors>
-
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="com.baidu.dsp.common.interceptor.session.SessionInterceptor"></bean>
         </mvc:interceptor>
-
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="com.baidu.dsp.common.interceptor.login.LoginInterceptor">

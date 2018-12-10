@@ -1,5 +1,6 @@
 package com.baidu.disconf.web.test;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -14,5 +15,6 @@ import com.baidu.disconf.web.test.service.config.dao.ConfigDaoTestCase;
 @RunWith(Suite.class)
 @SuiteClasses({ ConfigDaoTestCase.class })
 public class AllTestSuite {
+
 
 }

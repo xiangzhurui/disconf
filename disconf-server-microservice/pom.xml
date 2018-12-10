@@ -29,11 +29,6 @@
     <dependencies>
         <!-- disconf -->
         <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-core</artifactId>
-            <version>${disconf-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.knightliao.apollo</groupId>
             <artifactId>apollo</artifactId>
             <version>1.0.14</version>
@@ -44,6 +39,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.baidu.disconf</groupId>
+            <artifactId>disconf-core</artifactId>
+            <version>${disconf-core.version}</version>
+        </dependency>
+        <!---->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>

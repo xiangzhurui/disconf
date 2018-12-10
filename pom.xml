@@ -10,10 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>apollo</module>
         <module>disconf-core</module>
         <module>disconf-client</module>
         <module>disconf-server-microservice</module>
-        <module>disconf-web</module>
     </modules>
 
     <inceptionYear>2015</inceptionYear>
@@ -42,7 +42,7 @@
 
         <!-- JAVA环境 -->
 
-        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.version>4.3.21.RELEASE</spring.version>
         <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
         <junit.version>4.12</junit.version>
         <servlet.version>3.1.0</servlet.version>
