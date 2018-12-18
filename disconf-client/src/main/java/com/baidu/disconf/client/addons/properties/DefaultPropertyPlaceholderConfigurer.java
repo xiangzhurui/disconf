@@ -58,6 +58,7 @@ public class DefaultPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
      *
      * @return the resolved placeholder
      */
+    @Override
     protected final String resolvePlaceholder(final String placeholderWithDefault, final Properties props,
                                               final int systemPropertiesMode) {
         String placeholder = getPlaceholder(placeholderWithDefault);

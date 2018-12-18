@@ -4,12 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.config.inner.DisInnerConfigAnnotation;
 import com.baidu.disconf.client.support.DisconfAutowareConfig;
 import com.baidu.disconf.core.common.constants.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Disconf Client的用户配置文件
@@ -19,7 +18,7 @@ import com.baidu.disconf.core.common.constants.Constants;
  */
 public final class DisClientConfig {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(DisClientConfig.class);
+    protected static final Logger log = LoggerFactory.getLogger(DisClientConfig.class);
 
     protected static final DisClientConfig INSTANCE = new DisClientConfig();
 
@@ -27,9 +26,12 @@ public final class DisClientConfig {
         return INSTANCE;
     }
 
-    protected static final String filename = "disconf.properties";
+    protected static final String disconf_file_name = "disconf.properties";
 
-    // disconf.properties 的路径 -D 传入
+    /**
+     * disconf.properties 的路径 -D 传入
+     * 例：  -Ddisconf.conf='/config/disconf.properties'
+     */
     private static final String DISCONF_CONF_FILE_PATH_ARG = "disconf.conf";
 
     private boolean isLoaded = false;
@@ -53,15 +55,14 @@ public final class DisClientConfig {
             return;
         }
 
-        String filePathInternal = filename;
+        String filePathInternal = disconf_file_name;
 
         // 指定的路径
         if (filePath != null) {
             filePathInternal = filePath;
         }
 
-        // -d 的路径
-        // 优先使用 系统参数或命令行导入
+        // -d 的路径,优先使用 系统参数或命令行导入
         String disconfFilePath = System.getProperty(DISCONF_CONF_FILE_PATH_ARG);
         if (disconfFilePath != null) {
             filePathInternal = disconfFilePath;
@@ -70,7 +71,7 @@ public final class DisClientConfig {
         try {
             DisconfAutowareConfig.autowareConfig(INSTANCE, filePathInternal);
         } catch (Exception e) {
-            LOGGER.warn("cannot find " + filePathInternal + ", using sys var or user input.");
+            log.warn("cannot find " + filePathInternal + ", using sys var or user input.");
         }
 
         // 使用system env 导入
@@ -83,6 +84,7 @@ public final class DisClientConfig {
      * 配置文件服务器 HOST
      */
     public static final String CONF_SERVER_HOST_NAME = "disconf.conf_server_host";
+
     @DisInnerConfigAnnotation(name = DisClientConfig.CONF_SERVER_HOST_NAME)
     public String CONF_SERVER_HOST;
 

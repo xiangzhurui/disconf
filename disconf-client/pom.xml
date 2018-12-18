@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>disconf-client</artifactId>
-    <packaging>jar</packaging>
-    <version>${disconf-client.version}</version>
+
 
     <parent>
         <groupId>com.baidu.disconf</groupId>
@@ -13,6 +12,10 @@
         <version>2.6.37</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
+    <artifactId>disconf-client</artifactId>
+    <version>${disconf-client.version}</version>
+    <packaging>jar</packaging>
 
     <licenses>
         <license>
@@ -272,7 +275,7 @@
 
     <name>disconf-client</name>
     <url>https://github.com/knightliao/disconf/tree/master/disconf-client</url>
-    <description>https://github.com/knightliao/disconf/tree/master/disconf-client</description>
+    <description>disconf 客户端 https://github.com/knightliao/disconf/tree/master/disconf-client</description>
 
     <organization>
         <name>Baidu</name>

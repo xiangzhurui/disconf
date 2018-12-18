@@ -215,7 +215,7 @@ public class DisconfStoreFileProcessorImpl implements DisconfStoreProcessor {
                     keMap.get(fileItem).setValue(value);
 
                 } catch (Exception e) {
-                    LOGGER.error("inject2Store filename: " + fileName + " " + e.toString(), e);
+                    LOGGER.error("inject2Store disconf_file_name: " + fileName + " " + e.toString(), e);
                 }
             }
         }

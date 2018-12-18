@@ -1,8 +1,22 @@
 package com.baidu.disconf.client.addons.properties;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.*;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -15,9 +29,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringValueResolver;
 
-import java.io.IOException;
-import java.util.*;
-
 /**
  * 具有 reloadable 的 property bean
  * 扩展了 DefaultPropertyPlaceholderConfigurer
@@ -26,12 +37,17 @@ import java.util.*;
  * 2. 当动态config变动时，此configurer会进行reload
  * 3. reload 时会 compare config value, and set value for beans
  */
-public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlaceholderConfigurer implements
-        InitializingBean, DisposableBean, IReloadablePropertiesListener, ApplicationContextAware {
+public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlaceholderConfigurer
+        implements InitializingBean,
+        DisposableBean,
+        IReloadablePropertiesListener,
+        ApplicationContextAware {
 
-    protected static final Logger logger = LoggerFactory.getLogger(ReloadingPropertyPlaceholderConfigurer.class);
+    protected static final Logger log = LoggerFactory.getLogger(ReloadingPropertyPlaceholderConfigurer.class);
 
-    // 默认的 property 标识符
+    /**
+     * 默认的 property 标识符
+     */
     private String placeholderPrefix = DEFAULT_PLACEHOLDER_PREFIX;
 
     private String placeholderSuffix = DEFAULT_PLACEHOLDER_SUFFIX;
@@ -72,7 +88,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                     }
                     addDependency(dynamic, placeholder);
                 } else {
-                    logger.debug("dynamic property outside bean property value - ignored: " + strVal);
+                    log.debug("dynamic property outside bean property value - ignored: " + strVal);
                 }
                 startIndex = endIndex - this.placeholderPrefix.length() + this.placeholderPrefix.length() +
                         this.placeholderSuffix.length();
@@ -143,8 +159,8 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                 String newValue = newProperties.getProperty(placeholder);
                 String oldValue = oldProperties.getProperty(placeholder);
                 if (newValue != null && !newValue.equals(oldValue) || newValue == null && oldValue != null) {
-                    if (logger.isInfoEnabled()) {
-                        logger.info("Property changed detected: " + placeholder +
+                    if (log.isInfoEnabled()) {
+                        log.info("Property changed detected: " + placeholder +
                                 (newValue != null ? "=" + newValue : " removed"));
                     }
                     List<DynamicProperty> affectedDynamics = placeholderToDynamics.get(placeholder);
@@ -169,7 +185,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                         beanByBeanName.put(beanName, bean);
                     } catch (BeansException e) {
                         // keep dynamicsByBeanName list, warn only once.
-                        logger.error("Error obtaining bean " + beanName, e);
+                        log.error("Error obtaining bean " + beanName, e);
                     }
 
                     //
@@ -180,7 +196,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                             ((IReconfigurationAware) bean).beforeReconfiguration();  // hello!
                         }
                     } catch (Exception e) {
-                        logger.error("Error calling beforeReconfiguration on " + beanName, e);
+                        log.error("Error calling beforeReconfiguration on " + beanName, e);
                     }
                 }
                 l.add(dynamic);
@@ -215,15 +231,15 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                         currentBeanName = null;
                         currentPropertyName = null;
                     }
-                    if (logger.isInfoEnabled()) {
-                        logger.info("Updating property " + beanName + "." + propertyName + " to " + newValue);
+                    if (log.isInfoEnabled()) {
+                        log.info("Updating property " + beanName + "." + propertyName + " to " + newValue);
                     }
 
                     // assign it to the bean
                     try {
                         beanWrapper.setPropertyValue(propertyName, newValue);
                     } catch (BeansException e) {
-                        logger.error("Error setting property " + beanName + "." + propertyName + " to " + newValue, e);
+                        log.error("Error setting property " + beanName + "." + propertyName + " to " + newValue, e);
                     }
                 }
             }
@@ -239,12 +255,12 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
                         ((IReconfigurationAware) bean).afterReconfiguration();
                     }
                 } catch (Exception e) {
-                    logger.error("Error calling afterReconfiguration on " + beanName, e);
+                    log.error("Error calling afterReconfiguration on " + beanName, e);
                 }
             }
 
         } catch (IOException e) {
-            logger.error("Error trying to reload net.unicon.iamlabs.spring.properties.example.net.unicon.iamlabs" +
+            log.error("Error trying to reload net.unicon.iamlabs.spring.properties.example.net.unicon.iamlabs" +
                     ".spring" + ".properties: " + e.getMessage(), e);
         }
     }
@@ -402,7 +418,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
     public void afterPropertiesSet() {
         for (Properties properties : propertiesArray) {
             if (properties instanceof ReloadableProperties) {
-                logger.debug("add property listener: " + properties.toString());
+                log.debug("add property listener: " + properties.toString());
                 ((ReloadableProperties) properties).addReloadablePropertiesListener(this);
             }
         }
@@ -418,7 +434,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
     public void destroy() throws Exception {
         for (Properties properties : propertiesArray) {
             if (properties instanceof ReloadableProperties) {
-                logger.debug("remove property listener: " + properties.toString());
+                log.debug("remove property listener: " + properties.toString());
                 ((ReloadableProperties) properties).removeReloadablePropertiesListener(this);
             }
         }
