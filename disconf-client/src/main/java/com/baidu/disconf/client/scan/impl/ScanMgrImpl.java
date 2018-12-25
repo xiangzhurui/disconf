@@ -60,6 +60,7 @@ public class ScanMgrImpl implements ScanMgr {
      *
      * @throws Exception
      */
+    @Override
     public void firstScan(List<String> packageNameList) throws Exception {
 
         LOGGER.debug("start to scan package: " + packageNameList.toString());
@@ -84,6 +85,7 @@ public class ScanMgrImpl implements ScanMgr {
     /**
      * 第二次扫描(动态)
      */
+    @Override
     public void secondScan() throws Exception {
 
         // 开启disconf才需要处理回调
@@ -105,7 +107,7 @@ public class ScanMgrImpl implements ScanMgr {
 
     /**
      * reloadable file scan
-     *
+     *重新加载文件扫描
      * @throws Exception
      */
     @Override

@@ -69,6 +69,7 @@ public final class DisClientConfig {
         }
 
         try {
+            // 导入系统配置和用户匹配值
             DisconfAutowareConfig.autowareConfig(INSTANCE, filePathInternal);
         } catch (Exception e) {
             log.warn("cannot find " + filePathInternal + ", using sys var or user input.");

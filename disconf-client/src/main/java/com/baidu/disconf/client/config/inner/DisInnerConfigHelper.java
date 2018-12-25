@@ -4,15 +4,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.config.DisClientConfig;
 import com.baidu.disconf.client.config.DisClientSysConfig;
 import com.baidu.disconf.client.support.utils.StringUtil;
 import com.baidu.disconf.core.common.utils.ClassLoaderUtil;
 import com.baidu.disconf.core.common.utils.OsUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 用户配置、系统配置 的校验
@@ -22,11 +21,10 @@ import com.baidu.disconf.core.common.utils.OsUtil;
  */
 public class DisInnerConfigHelper {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(DisInnerConfigHelper.class);
+    protected static final Logger log = LoggerFactory.getLogger(DisInnerConfigHelper.class);
 
     /**
-     * @throws Exception
-     *  校验用户配置文件是否正常
+     * @throws Exception 校验用户配置文件是否正常
      * @author liaoqiqi
      * @date 2013-6-13
      */
@@ -46,8 +44,7 @@ public class DisInnerConfigHelper {
 
         DisClientConfig.getInstance()
                 .setHostList(StringUtil.parseStringToStringList(DisClientConfig.getInstance().CONF_SERVER_HOST, ","));
-        LOGGER.info(
-                "SERVER " + DisClientConfig.CONF_SERVER_HOST_NAME + ": " + DisClientConfig.getInstance().getHostList());
+        log.info("SERVER " + DisClientConfig.CONF_SERVER_HOST_NAME + ": " + DisClientConfig.getInstance().getHostList());
 
         //
         // 版本
@@ -56,7 +53,7 @@ public class DisInnerConfigHelper {
 
             throw new Exception("settings: " + DisClientConfig.VERSION_NAME + " cannot find");
         }
-        LOGGER.info("SERVER " + DisClientConfig.VERSION_NAME + ": " + DisClientConfig.getInstance().VERSION);
+        log.info("SERVER " + DisClientConfig.VERSION_NAME + ": " + DisClientConfig.getInstance().VERSION);
 
         //
         // APP名
@@ -65,7 +62,7 @@ public class DisInnerConfigHelper {
 
             throw new Exception("settings: " + DisClientConfig.APP_NAME + " cannot find");
         }
-        LOGGER.info("SERVER " + DisClientConfig.APP_NAME + ": " + DisClientConfig.getInstance().APP);
+        log.info("SERVER " + DisClientConfig.APP_NAME + ": " + DisClientConfig.getInstance().APP);
 
         //
         // 环境
@@ -74,28 +71,26 @@ public class DisInnerConfigHelper {
 
             throw new Exception("settings: " + DisClientConfig.ENV_NAME + "  cannot find");
         }
-        LOGGER.info("SERVER " + DisClientConfig.ENV_NAME + ": " + DisClientConfig.getInstance().ENV);
+        log.info("SERVER " + DisClientConfig.ENV_NAME + ": " + DisClientConfig.getInstance().ENV);
 
         //
         // 是否使用远程的配置
-        LOGGER.info("SERVER disconf.enable.remote.conf: " + DisClientConfig.getInstance().ENABLE_DISCONF);
+        log.info("SERVER disconf.enable.remote.conf: " + DisClientConfig.getInstance().ENABLE_DISCONF);
 
         //
         // debug mode
-        LOGGER.info("SERVER disconf.debug: " + DisClientConfig.getInstance().DEBUG);
+        log.info("SERVER disconf.debug: " + DisClientConfig.getInstance().DEBUG);
 
         // 用户下载文件夹
         if (!StringUtils.isEmpty(DisClientConfig.getInstance().userDefineDownloadDir)) {
             OsUtil.makeDirs(DisClientConfig.getInstance().userDefineDownloadDir);
-            LOGGER.info("SERVER disconf.user_define_download_dir: " + DisClientConfig.getInstance()
-                    .userDefineDownloadDir);
+            log.info("SERVER disconf.user_define_download_dir: " + DisClientConfig.getInstance().userDefineDownloadDir);
         }
 
         //
         // 忽略哪些分布式配置
         //
-        List<String> ignoreDisconfList =
-                StringUtil.parseStringToStringList(DisClientConfig.getInstance().IGNORE_DISCONF_LIST, ",");
+        List<String> ignoreDisconfList = StringUtil.parseStringToStringList(DisClientConfig.getInstance().IGNORE_DISCONF_LIST, ",");
         Set<String> keySet = new HashSet<String>();
         if (ignoreDisconfList != null) {
             for (String ignoreData : ignoreDisconfList) {
@@ -103,33 +98,29 @@ public class DisInnerConfigHelper {
             }
         }
         DisClientConfig.getInstance().setIgnoreDisconfKeySet(keySet);
-        LOGGER.info("SERVER disconf.ignore: " + DisClientConfig.getInstance().getIgnoreDisconfKeySet());
+        log.info("SERVER disconf.ignore: " + DisClientConfig.getInstance().getIgnoreDisconfKeySet());
 
         // 重试
-        LOGGER.debug("SERVER disconf.conf_server_url_retry_times: " + DisClientConfig
-                .getInstance().CONF_SERVER_URL_RETRY_TIMES);
+        log.debug("SERVER disconf.conf_server_url_retry_times: " + DisClientConfig.getInstance().CONF_SERVER_URL_RETRY_TIMES);
 
-        LOGGER.debug("SERVER disconf.conf_server_url_retry_sleep_seconds: " +
-                DisClientConfig.getInstance().confServerUrlRetrySleepSeconds);
+        log.debug("SERVER disconf.conf_server_url_retry_sleep_seconds: " + DisClientConfig.getInstance().confServerUrlRetrySleepSeconds);
 
-        LOGGER.debug("SERVER disconf.enable_local_download_dir_in_class_path: " + DisClientConfig
-                .getInstance().enableLocalDownloadDirInClassPath);
+        log.debug("SERVER disconf.enable_local_download_dir_in_class_path: " + DisClientConfig.getInstance().enableLocalDownloadDirInClassPath);
         // 是否将文件放在classpath目录下
         if (DisClientConfig.getInstance().enableLocalDownloadDirInClassPath) {
 
             String classpath = ClassLoaderUtil.getClassPath();
 
             if (classpath.isEmpty()) {
-                LOGGER.warn("CLASSPATH is null. we will not transfer your config file to classpath in the following");
+                log.warn("CLASSPATH is null. we will not transfer your config file to classpath in the following");
             } else {
-                LOGGER.debug("classpath: " + classpath);
+                log.debug("classpath: " + classpath);
             }
         }
     }
 
     /**
-     * @throws Exception
-     *  校验系统配置文件是否正常
+     * @throws Exception 校验系统配置文件是否正常
      * @date 2013-6-13
      */
     public static void verifySysConfig() throws Exception {
@@ -143,24 +134,21 @@ public class DisInnerConfigHelper {
 
             throw new Exception("settings: CONF_SERVER_STORE_ACTION cannot find");
         }
-        LOGGER.debug("SERVER disconf.conf_server_store_action: " + DisClientSysConfig
-                .getInstance().CONF_SERVER_STORE_ACTION);
+        log.debug("SERVER disconf.conf_server_store_action: " + DisClientSysConfig.getInstance().CONF_SERVER_STORE_ACTION);
 
         // CONF_SERVER_ZOO_ACTION
         if (StringUtils.isEmpty(DisClientSysConfig.getInstance().CONF_SERVER_ZOO_ACTION)) {
 
             throw new Exception("settings: CONF_SERVER_ZOO_ACTION cannot find");
         }
-        LOGGER.debug(
-                "SERVER disconf.conf_server_zoo_action: " + DisClientSysConfig.getInstance().CONF_SERVER_ZOO_ACTION);
+        log.debug("SERVER disconf.conf_server_zoo_action: " + DisClientSysConfig.getInstance().CONF_SERVER_ZOO_ACTION);
 
         // CONF_SERVER_MASTER_NUM_ACTION
         if (StringUtils.isEmpty(DisClientSysConfig.getInstance().CONF_SERVER_MASTER_NUM_ACTION)) {
 
             throw new Exception("settings: CONF_SERVER_MASTER_NUM_ACTION  cannot find");
         }
-        LOGGER.debug("SERVER disconf.conf_server_master_num_action: " +
-                DisClientSysConfig.getInstance().CONF_SERVER_MASTER_NUM_ACTION);
+        log.debug("SERVER disconf.conf_server_master_num_action: " + DisClientSysConfig.getInstance().CONF_SERVER_MASTER_NUM_ACTION);
 
         //
         // 本地相关
@@ -171,7 +159,7 @@ public class DisInnerConfigHelper {
         }
 
         // LOCAL_DOWNLOAD_DIR
-        LOGGER.debug("SERVER disconf.local_download_dir: " + DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR);
+        log.debug("SERVER disconf.local_download_dir: " + DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR);
         OsUtil.makeDirs(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR);
     }
 

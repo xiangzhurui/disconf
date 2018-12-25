@@ -35,12 +35,11 @@ public class StaticScannerNonAnnotationFileMgrImpl extends StaticScannerMgrImplB
     }
 
     /**
-     *
+     * 扫描数据并存储
      */
     public static void scanData2Store(String fileName) {
 
-        DisconfCenterBaseModel disconfCenterBaseModel =
-                StaticScannerNonAnnotationFileMgrImpl.getDisconfCenterFile(fileName);
+        DisconfCenterBaseModel disconfCenterBaseModel = StaticScannerNonAnnotationFileMgrImpl.getDisconfCenterFile(fileName);
 
         DisconfStoreProcessorFactory.getDisconfStoreFileProcessor().transformScanData(disconfCenterBaseModel);
     }

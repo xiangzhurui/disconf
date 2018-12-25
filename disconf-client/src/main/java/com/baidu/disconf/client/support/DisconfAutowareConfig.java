@@ -4,13 +4,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 import com.baidu.disconf.client.config.inner.DisInnerConfigAnnotation;
 import com.baidu.disconf.client.support.utils.ClassUtils;
 import com.baidu.disconf.client.support.utils.ConfigLoaderUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 配置导入工具
@@ -24,7 +23,7 @@ public final class DisconfAutowareConfig {
 
     }
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(DisconfAutowareConfig.class);
+    protected static final Logger log = LoggerFactory.getLogger(DisconfAutowareConfig.class);
 
     /**
      * 先用TOMCAT模式进行导入配置文件，若找不到，则用项目目录模式进行导入
@@ -37,8 +36,8 @@ public final class DisconfAutowareConfig {
 
     /**
      * 使用 system env 进行数据导入, 能识别   DisInnerConfigAnnotation 的标识
-     *
-     *  auto ware
+     * <p>
+     * auto ware
      */
     public static void autowareConfigWithSystemEnv(final Object obj) throws Exception {
 
@@ -74,7 +73,7 @@ public final class DisconfAutowareConfig {
 
                         } catch (Exception e) {
 
-                            LOGGER.error(String.format("invalid config: %s", name), e);
+                            log.error(String.format("invalid config: %s", name), e);
                         }
 
                     }
@@ -88,8 +87,8 @@ public final class DisconfAutowareConfig {
 
     /**
      * 自动导入配置数据,能识别 DisconfFileItem 或 DisInnerConfigAnnotation 的标识
-     *
-     *  auto ware
+     * <p>
+     * auto ware
      */
     private static void autowareConfig(final Object obj, Properties prop) throws Exception {
 
@@ -140,14 +139,11 @@ public final class DisconfAutowareConfig {
                     field.setAccessible(true);
 
                     if (null != value) {
-
                         try {
-
                             ClassUtils.setFieldValeByType(field, obj, value);
-
                         } catch (Exception e) {
 
-                            LOGGER.error(String.format("invalid config: %s", name), e);
+                            log.error(String.format("invalid config: %s", name), e);
                         }
                     }
                 }
@@ -176,8 +172,8 @@ public final class DisconfAutowareConfig {
 
     /**
      * 自动导入Static配置数据,能识别 DisconfFileItem 或 DisconfFileItem 的标识
-     *
-     *  auto ware
+     * <p>
+     * auto ware
      */
     private static void autowareStaticConfig(Class<?> cls, Properties prop) throws Exception {
 
