@@ -49,8 +49,8 @@
     <!--</bean>-->
 
     <bean id="zooConfig" class="com.baidu.disconf.web.service.zookeeper.config.ZooConfig">
-        <property name="zooHosts" value="${hosts}"/>
-        <property name="zookeeperUrlPrefix" value="${zookeeper_url_prefix}"/>
+        <property name="zooHosts" value="${zookepper.hosts}"/>
+        <property name="zookeeperUrlPrefix" value="${zookeeper.url_prefix}"/>
     </bean>
 
     <bean id="applicationPropertyConfig" class="com.baidu.disconf.web.config.ApplicationPropertyConfig">
